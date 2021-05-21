@@ -1,35 +1,21 @@
 import os
-import logging
 
 import discord
 from discord.ext import commands
 
+# setup of logging and env-vars
+# logging must be initialized before environment, to enable logging in environment
+from log_setup import logger
 from environment import PREFIX, TOKEN
+
+"""
+This bot is based on a template by nonchris
+https://github.com/nonchris/discord-bot
+"""
 
 # path for databases or config files
 if not os.path.exists('data/'):
     os.mkdir('data/')
-
-# set logging format
-formatter = logging.Formatter("[{asctime}] [{levelname}] [{name}] {message}", style="{")
-
-# logger for writing to file
-file_logger = logging.FileHandler('data/events.log')
-file_logger.setLevel(logging.INFO)  # everything into the logging file
-file_logger.setFormatter(formatter)
-
-# logger for console prints
-console_logger = logging.StreamHandler()
-console_logger.setLevel(logging.WARNING)  # only important stuff to the terminal
-console_logger.setFormatter(formatter)
-
-# get new logger
-logger = logging.getLogger('my-bot')
-logger.setLevel(logging.INFO)
-
-# register loggers
-logger.addHandler(file_logger)
-logger.addHandler(console_logger)
 
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix=PREFIX, intents=intents)
@@ -39,7 +25,8 @@ bot = commands.Bot(command_prefix=PREFIX, intents=intents)
 @bot.event
 async def on_ready():
     print(f'{bot.user.name} has connected')
-    guild = discord.utils.get(bot.guilds)  # , name=GUILD)
+
+    logger.info(f"Bot has connected, active on {len(bot.guilds)} guilds")
 
     print(f'Bot is connected to the following guilds:')
     print()
