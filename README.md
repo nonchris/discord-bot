@@ -27,8 +27,8 @@ _What is does:_
 * util function for easy embed creation
 
 ## about
-This repository contains code that was written by me across various bot-projects, like:
-https://github.com/nonchris/discord-fury
+This repository contains code that was written by me across various bot-projects, like:  
+https://github.com/nonchris/discord-fury  
 https://github.com/Info-Bonn/poll-bot
 
 I collected the most useful and generic functions to save me some time when starting the next bot-project. 
