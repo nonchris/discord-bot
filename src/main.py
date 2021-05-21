@@ -4,9 +4,7 @@ import logging
 import discord
 from discord.ext import commands
 
-intents = discord.Intents.all()
-
-TOKEN = os.getenv("TOKEN")  # reading in the token from config.py file
+from environment import PREFIX, TOKEN
 
 # path for databases or config files
 if not os.path.exists('data/'):
@@ -33,9 +31,8 @@ logger.setLevel(logging.INFO)
 logger.addHandler(file_logger)
 logger.addHandler(console_logger)
 
-prefix = "b!"
-
-bot = commands.Bot(command_prefix=prefix, intents=intents)
+intents = discord.Intents.all()
+bot = commands.Bot(command_prefix=PREFIX, intents=intents)
 
 
 # login message
