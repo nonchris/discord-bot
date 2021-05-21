@@ -49,12 +49,13 @@ async def on_ready():
         member_count += g.member_count
     print()
     await bot.change_presence(
-        activity=discord.Activity(type=discord.ActivityType.watching, name=f"{prefix}help"))
+        activity=discord.Activity(type=discord.ActivityType.watching, name=f"{PREFIX}help"))
 
 # LOADING Extensions
-# bot.remove_command('help')
+bot.remove_command('help')  # unload default help message
 initial_extensions = [
     'cogs.misc',
+    'cogs.help'
 ]
 
 if __name__ == '__main__':
