@@ -1,12 +1,22 @@
 # discord-bot-template
 Generic, functional bot based on discord.py  
-Including logging configuration, some utils and a general bot setup
+Including a custom help command and ping command, utils for easy embed creation, logging configuration, and a general bot setup
 
 ## setup
 `pip install -r requirements.txt`  
 `export TOKEN="your-key"`  
 `python3 main.py`  
 _Remember using a virtual environment!_
+
+#### optional env variables
+| parameter |  description |
+| ------ |  ------ |
+| `export Prefix="b!"`  | Command prefix |
+| `export VERSION="unknown"` | Version the bot is running |
+| `export OWNER_NAME="unknwon"` | Name of the bot owner |
+| `export OWNER_ID="100000000000000000"` | ID of the bot owner |
+
+The shown values are the default values that will be loaded if nothing else is specified.
 
 ## features
 This bot does 'nothing' but is completely functional!  

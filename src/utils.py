@@ -1,6 +1,12 @@
 import discord
 from discord.errors import Forbidden
 
+"""
+The color presets, send_message() and make_embed() functions are included in the discord-bot template by nonchris
+https://github.com/nonchris/discord-bot
+"""
+
+
 # color scheme for embeds as rbg
 blue_light = discord.Color.from_rgb(20, 255, 255)  # default color
 green = discord.Color.from_rgb(142, 250, 60)   # success green
