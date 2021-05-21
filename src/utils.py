@@ -4,6 +4,7 @@ import discord
 from discord.errors import Forbidden
 
 # color scheme for embeds as rbg
+blue_light = (20, 255, 255)  # default color
 yellow = (245, 218, 17)  # waring like 'hey, that's not cool'
 orange = (245, 139, 17)  # waring - rather critical like 'no more votes left'
 
@@ -30,7 +31,7 @@ async def send_embed(ctx, embed):
 
 # creating and returning an embed with keyword arguments
 # please note that name and value can't be empty - name and value contain a zero width non-joiner
-def make_embed(title="", color=(20, 255, 255), name="‌", value="‌", footer=None) -> discord.Embed:
+def make_embed(title="", color=blue_light, name="‌", value="‌", footer=None) -> discord.Embed:
     """
     Function to generate generate an embed in one function call
 
