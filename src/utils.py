@@ -1,12 +1,12 @@
-import re
-
 import discord
 from discord.errors import Forbidden
 
 # color scheme for embeds as rbg
-blue_light = (20, 255, 255)  # default color
-yellow = (245, 218, 17)  # waring like 'hey, that's not cool'
-orange = (245, 139, 17)  # waring - rather critical like 'no more votes left'
+blue_light = discord.Color.from_rgb(20, 255, 255)  # default color
+green = discord.Color.from_rgb(142, 250, 60)   # success green
+yellow = discord.Color.from_rgb(245, 218, 17)  # waring like 'hey, that's not cool'
+orange = discord.Color.from_rgb(245, 139, 17)  # waring - rather critical like 'no more votes left'
+red = discord.Color.from_rgb(255, 28, 25)      # error red
 
 
 async def send_embed(ctx, embed):
