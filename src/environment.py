@@ -1,4 +1,5 @@
 import os
+import logging
 
 
 def load_env(key: str, default: str) -> str:
@@ -13,8 +14,11 @@ def load_env(key: str, default: str) -> str:
     if value:
         return value
     print(f"Can't load env-variable for: '{key}' - falling back to DEFAULT {key}='{default}'")
+    logger.warning(f"Can't load env-variable for: '{key}' - falling back to DEFAULT {key}='{default}'")
     return default
 
+
+logger = logging.getLogger('my-bot')
 
 TOKEN = os.getenv("TOKEN")  # reading in the token from config.py file
 
