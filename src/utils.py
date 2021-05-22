@@ -49,7 +49,6 @@ def make_embed(title="", color=blue_light, name="‌", value="‌", footer=None)
     :return: Embed ready to send
     """
     # make color object
-    color = discord.Color.from_rgb(*color)  # * unwraps the elements in the tuple
     emb = discord.Embed(title=title, color=color)
     emb.add_field(name=name, value=value)
     if footer:
