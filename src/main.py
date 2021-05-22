@@ -13,10 +13,6 @@ This bot is based on a template by nonchris
 https://github.com/nonchris/discord-bot
 """
 
-# path for databases or config files
-if not os.path.exists('data/'):
-    os.mkdir('data/')
-
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix=PREFIX, intents=intents)
 

@@ -1,4 +1,9 @@
+import os
 import logging
+
+# path for databases or config files
+if not os.path.exists('data/'):
+    os.mkdir('data/')
 
 # set logging format
 formatter = logging.Formatter("[{asctime}] [{levelname}] [{name}] {message}", style="{")
