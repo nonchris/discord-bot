@@ -35,3 +35,6 @@ I collected the most useful and generic functions to save me some time when star
 
 ### dependencies 
 This project is based on `discord.py V1.x` minimum required: V1.5.1
+
+### documentation
+In order to render this documentation, just call `doxygen`

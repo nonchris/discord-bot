@@ -4,17 +4,15 @@ from discord.ext import commands
 import utils as utl
 from environment import OWNER_NAME, OWNER_ID, VERSION, PREFIX
 
-"""
-This custom help command is a replacement for the default one on any Discord Bot written in discord.py!
-However, you must put "bot.remove_command('help')" in your bot, and the command must be in a cog for it to work.
-
-Original concept by Jared Newsom (AKA Jared M.F.)
-[link no longer available] https://gist.github.com/StudioMFTechnologies/ad41bfd32b2379ccffe90b0e34128b8b 
-Rewritten and optimized by https://github.com/nonchris
-https://gist.github.com/nonchris/1c7060a14a9d94e7929aa2ef14c41bc2
-
-This version relies more on the structure around this module than the gist does, which is more 'stand alone'
-"""
+### @package help
+# 
+# This custom help command is a replacement for the default one on any Discord Bot written in discord.py!
+# However, you must put "bot.remove_command('help')" in your bot, and the command must be in a cog for it to work.
+# 
+# Original concept by [Jared Newsom (AKA Jared M.F.)](https://gist.github.com/StudioMFTechnologies/ad41bfd32b2379ccffe90b0e34128b8b)
+# Rewritten and optimized by [nonchris](https://github.com/nonchris)
+# 
+# This version relies more on the structure around this module than the gist does, which is more 'stand alone'
 
 
 class Help(commands.Cog):
@@ -23,12 +21,22 @@ class Help(commands.Cog):
     """
 
     def __init__(self, bot):
+        """! 
+        Constructor
+
+        @param bot The bot instance to be used.
+        """
         self.bot = bot
 
     @commands.command(aliases=['h', 'hilfe'])
     # @commands.bot_has_permissions(add_reactions=True,embed_links=True)
     async def help(self, ctx, *params):
-        """Shows all modules of that bot"""
+        """!
+        Shows all modules of that bot
+        
+        @param ctx Context of the message.
+        @param params further arguments
+        """
 
         # checks if cog parameter was given
         # if not: sending all modules and commands not associated with a cog
@@ -121,4 +129,9 @@ class Help(commands.Cog):
 
 
 def setup(bot):
+    """!
+    Setup a bot.
+
+    @param bot The bot to setup.
+    """
     bot.add_cog(Help(bot))

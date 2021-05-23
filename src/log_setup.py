@@ -1,6 +1,11 @@
 import os
 import logging
 
+### @package log_setup
+#
+# Setup of logging
+#
+
 # path for databases or config files
 if not os.path.exists('data/'):
     os.mkdir('data/')
