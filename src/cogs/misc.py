@@ -4,6 +4,11 @@ from discord.ext import commands
 import utils as ut
 
 
+### @package misc
+#
+# Collection of miscellaneus helpers.
+#
+
 class Misc(commands.Cog):
     """
     Various useful Commands for everyone
@@ -14,6 +19,11 @@ class Misc(commands.Cog):
 
     @commands.command(name='ping', help="Check if Bot available")
     async def ping(self, ctx):
+        """!
+        ping to check if the bot is available
+
+        @param ctx Context of the message
+        """
         print(f"ping: {round(self.bot.latency * 1000)}")
 
         await ctx.send(

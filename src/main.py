@@ -1,3 +1,4 @@
+#!/bin/env python
 import os
 
 import discord
@@ -20,6 +21,9 @@ bot = commands.Bot(command_prefix=PREFIX, intents=intents)
 # login message
 @bot.event
 async def on_ready():
+    """!
+    function called when the bot is ready. emits the '[Bot] has connected' message
+    """
     print(f'{bot.user.name} has connected')
 
     logger.info(f"Bot has connected, active on {len(bot.guilds)} guilds")
