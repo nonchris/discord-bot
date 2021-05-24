@@ -77,9 +77,10 @@ class Help(commands.Cog):
                 emb.add_field(name='Not belonging to a module', value=commands_desc, inline=False)
 
             # setting information about author
-            emb.add_field(name="About", value=f"The base of this Bots is developed by nonchris, using on discord.py.\n\
-                                    This version of it is maintained by {owner}\n\
-                                    Please visit https://github.com/nonchris/discord-bot to submit ideas or bugs.")
+            emb.add_field(name="About",
+                          value=f"This bot is maintained by {owner}.\n\
+                                Please visit https://github.com/nonchris/discord-bot to submit ideas or bugs.\n\
+                                Based on a template by nonchris: https://github.com/nonchris/discord-bot.\n")
             emb.set_footer(text=f"Bot is running Version: {VERSION}")
 
         # block called when one cog-name is given
@@ -92,7 +93,7 @@ class Help(commands.Cog):
                 if cog.lower() == params[0].lower():
 
                     # making title - getting description from doc-string below class
-                    emb = discord.Embed(title=f'{cog} - Commands', description=self.bot.cogs[cog].__doc__,
+                    emb = discord.Embed(title=f'{cog} - commands', description=self.bot.cogs[cog].__doc__,
                                         color=utl.green)
 
                     # getting commands from cog
