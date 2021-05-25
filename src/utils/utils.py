@@ -77,3 +77,11 @@ def extract_id_from_string(content: str) -> Union[int, None]:
     match = re.match(r'(\D+|^)(\d{18})(\D+|$)', content)
 
     return int(match.group(2)) if match else None
+
+
+def get_member_name(member: discord.Member) -> str:
+    """!
+    Shorthand to extract wich name to use when addressing member
+    @return member.nick if exists else member.name
+    """
+    return member.nick if member.nick else member.name
