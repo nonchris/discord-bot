@@ -1,7 +1,6 @@
-import discord
 from discord.ext import commands
 
-import utils as ut
+from utils import utils as ut
 
 
 ### @package misc
