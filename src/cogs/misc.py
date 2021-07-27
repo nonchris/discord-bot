@@ -5,7 +5,7 @@ from utils import utils as ut
 
 ### @package misc
 #
-# Collection of miscellaneus helpers.
+# Collection of miscellaneous helpers.
 #
 
 class Misc(commands.Cog):
@@ -27,7 +27,7 @@ class Misc(commands.Cog):
 
         await ctx.send(
             embed=ut.make_embed(
-                name='Poll-Bot is available',
+                name='Bot is available',
                 value=f'`{round(self.bot.latency * 1000)}ms`')
         )
 
