@@ -15,7 +15,30 @@ https://github.com/nonchris/discord-bot
 """
 
 intents = discord.Intents.all()
-bot = commands.Bot(command_prefix=PREFIX, intents=intents)
+
+
+# inspired by https://github.com/Rapptz/RoboDanny
+# This function will be evaluated for each message
+# you can define specific behaviours for different messages or guilds, like custom prefixes for a guild etc...
+def _prefix_callable(_bot: commands.Bot, msg: discord.Message):
+
+    user_id = _bot.user.id
+    # way discord expresses mentions
+    # mobile and desktop have a different syntax how mentions are sent, so we handle both
+    prefixes = [f'<@!{user_id}> ', f'<@{user_id}> ']
+    if msg.guild is None:  # we're in DMs, using default prefix
+        prefixes.append(PREFIX)
+        return prefixes
+
+    # TODO: This would be the place to add guild specific custom prefixes
+    # you've got the current message hence the guild-id which is perfect to store and load prefixes for a guild
+    # just append them to base and only append the default prefix if there is no custom prefix for that guild
+
+    prefixes.append(PREFIX)
+    return prefixes
+
+
+bot = commands.Bot(command_prefix=_prefix_callable, intents=intents)
 
 
 # login message
