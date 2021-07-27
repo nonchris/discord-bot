@@ -38,14 +38,15 @@ async def on_ready():
     await bot.change_presence(
         activity=discord.Activity(type=discord.ActivityType.watching, name=f"{PREFIX}help"))
 
-# LOADING Extensions
-bot.remove_command('help')  # unload default help message
-initial_extensions = [
-    'cogs.misc',
-    'cogs.help'
-]
 
 if __name__ == '__main__':
+    # LOADING Extensions
+    bot.remove_command('help')  # unload default help message
+    initial_extensions = [
+        'cogs.misc',
+        'cogs.help'
+    ]
+
     for extension in initial_extensions:
         bot.load_extension(extension)
 
