@@ -17,7 +17,6 @@ def load_env(key: str, default: str) -> str:
     value = os.getenv(key)
     if value:
         return value
-    print(f"Can't load env-variable for: '{key}' - falling back to DEFAULT {key}='{default}'")
     logger.warning(f"Can't load env-variable for: '{key}' - falling back to DEFAULT {key}='{default}'")
     return default
 
