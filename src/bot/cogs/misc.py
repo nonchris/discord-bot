@@ -1,5 +1,6 @@
 from discord.ext import commands
 
+from ..log_setup import logger
 from ..utils import utils as ut
 
 
@@ -23,7 +24,7 @@ class Misc(commands.Cog):
 
         @param ctx Context of the message
         """
-        print(f"ping: {round(self.bot.latency * 1000)}")
+        logger.info(f"ping: {round(self.bot.latency * 1000)}")
 
         await ctx.send(
             embed=ut.make_embed(
