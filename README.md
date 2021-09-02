@@ -3,9 +3,9 @@ Generic, functional bot based on discord.py
 Including a custom help command and ping command, utils for easy embed creation, logging configuration, and a general bot setup
 
 ## setup
-`pip install -r requirements.txt`  
+` python3 -m pip install -e .`  
 `export TOKEN="your-key"`  
-`python3 main.py`
+`discord-bot`
 
 #### optional env variables
 | parameter |  description |
@@ -40,10 +40,7 @@ https://github.com/nonchris/discord-fury
 https://github.com/nonchris/quiz-bot  
 https://github.com/Info-Bonn/poll-bot
 
-I collected the most useful and generic functions to save me some time when starting the next bot-project. 
-
-### dependencies 
-This project is based on `discord.py V1.x` minimum required: V1.5.1
+I collected the most useful and generic functions to save me some time when starting the next bot-project.
 
 ### documentation
 In order to render this documentation, just call `doxygen`
