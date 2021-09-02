@@ -6,8 +6,8 @@ from discord.ext import commands
 
 # setup of logging and env-vars
 # logging must be initialized before environment, to enable logging in environment
-from log_setup import logger
-from environment import PREFIX, TOKEN
+from .log_setup import logger
+from .environment import PREFIX, TOKEN
 
 """
 This bot is based on a template by nonchris
@@ -45,32 +45,39 @@ bot = commands.Bot(command_prefix=_prefix_callable, intents=intents)
 @bot.event
 async def on_ready():
     """!
-    function called when the bot is ready. emits the '[Bot] has connected' message
+    function called when the bot is ready. Emits the '[Bot] has connected' message
     """
-    print(f'{bot.user.name} has connected')
 
-    logger.info(f"Bot has connected, active on {len(bot.guilds)} guilds")
-
-    print(f'Bot is connected to the following guilds:')
     print()
     member_count = 0
+    guild_string = ""
     for g in bot.guilds:
-        print(f"{g.name} - {g.id} - Members: {g.member_count}")
+        guild_string += f"{g.name} - {g.id} - Members: {g.member_count}\n"
         member_count += g.member_count
-    print()
+
+    logger.info(f"Bot '{bot.user.name}' has connected, active on {len(bot.guilds)} guilds:\n{guild_string}")
+
     await bot.change_presence(
         activity=discord.Activity(type=discord.ActivityType.watching, name=f"{PREFIX}help"))
 
-
-if __name__ == '__main__':
     # LOADING Extensions
+    # this is done in on_ready() so that cogs can fetch data from discord when they're loaded
     bot.remove_command('help')  # unload default help message
+    # TODO: Register your extensions here
     initial_extensions = [
-        'cogs.misc',
-        'cogs.help'
+        '.cogs.misc',
+        '.cogs.help'
     ]
 
     for extension in initial_extensions:
-        bot.load_extension(extension)
+        bot.load_extension(extension, package=__package__)
 
-    bot.run(TOKEN)
+
+def start_bot(token=None):
+    """ Start the bot, takes token, uses token from env if none is given """
+    if token is not None:
+        bot.run(token)
+    if TOKEN is not None:
+        bot.run(TOKEN)
+    else:
+        logger.error("No token was given! - Exiting")

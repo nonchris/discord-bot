@@ -1,8 +1,8 @@
 import discord
 from discord.ext import commands
 
-from utils import utils as utl
-from environment import OWNER_NAME, OWNER_ID, VERSION, PREFIX
+from ..utils import utils as utl
+from ..environment import OWNER_NAME, OWNER_ID, VERSION, PREFIX
 
 ### @package help
 # 
