@@ -61,8 +61,6 @@ async def on_ready():
     await bot.change_presence(
         activity=discord.Activity(type=discord.ActivityType.watching, name=f"{PREFIX}help"))
 
-
-if __name__ == '__main__':
     # LOADING Extensions
     bot.remove_command('help')  # unload default help message
     initial_extensions = [
@@ -74,4 +72,11 @@ if __name__ == '__main__':
         bot.load_extension(extension, package=__package__)
 
 
-    bot.run(TOKEN)
+def start_bot(token=None):
+    """ Start the bot, takes token, uses token from env if none is given """
+    if token is not None:
+        bot.run(token)
+    if TOKEN is not None:
+        bot.run(TOKEN)
+    else:
+        logger.error("No token was given! - Exiting")
