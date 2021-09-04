@@ -9,6 +9,7 @@ import logging
 def load_env(key: str, default: str) -> str:
     """!
     os.getenv() wrapper that handles the case of None-types for not-set env-variables\n
+    Does also replace specified expressions like {PREFIX} with actual content.
 
     @param key: name of env variable to load
     @param default: default value if variable couldn't be loaded
@@ -16,7 +17,15 @@ def load_env(key: str, default: str) -> str:
     """
     value = os.getenv(key)
     if value:
-        return value
+        try:
+            return value.replace("{PREFIX}", PREFIX)
+        except NameError as e:
+            logger.error(
+                f"Can't replace expressions for: '{key}' {e.__repr__()}.\n"
+                f"This happens if a referenced env-variable isn't initiated yet. "
+                f"You may wanna change the load order - falling back to DEFAULT {key}='{default}' "
+            )
+            return default
     logger.warning(f"Can't load env-variable for: '{key}' - falling back to DEFAULT {key}='{default}'")
     return default
 
