@@ -3,7 +3,7 @@ import logging
 
 ### @package environment
 #
-# Interacitons with the environment variables.
+# Interactions with the environment variables.
 #
 
 def load_env(key: str, default: str) -> str:
@@ -32,7 +32,7 @@ def load_env(key: str, default: str) -> str:
 
 logger = logging.getLogger('my-bot')
 
-TOKEN = os.getenv("TOKEN")  # reading in the token from config.py file
+TOKEN = os.getenv("TOKEN")  # reading in the token from environment - there is no default...
 
 # loading optional env variables
 PREFIX = load_env("PREFIX", "b!")

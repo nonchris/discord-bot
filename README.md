@@ -15,7 +15,8 @@ Including a custom help command and ping command, utils for easy embed creation,
 | `export OWNER_NAME="unknwon"` | Name of the bot owner |
 | `export OWNER_ID="100000000000000000"` | ID of the bot owner |
 
-The shown values are the default values that will be loaded if nothing else is specified.
+The shown values are the default values that will be loaded if nothing else is specified.  
+Expressions like `{PREFIX}` will be replaced by during loading the variable and can be used in specified env variables.  
 
 ## features
 This bot does 'nothing' but is completely functional!  
