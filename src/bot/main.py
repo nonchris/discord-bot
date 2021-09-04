@@ -7,7 +7,7 @@ from discord.ext import commands
 # setup of logging and env-vars
 # logging must be initialized before environment, to enable logging in environment
 from .log_setup import logger
-from .environment import PREFIX, TOKEN
+from .environment import PREFIX, TOKEN, ACTIVITY_NAME
 
 """
 This bot is based on a template by nonchris
@@ -58,7 +58,7 @@ async def on_ready():
     logger.info(f"Bot '{bot.user.name}' has connected, active on {len(bot.guilds)} guilds:\n{guild_string}")
 
     await bot.change_presence(
-        activity=discord.Activity(type=discord.ActivityType.watching, name=f"{PREFIX}help"))
+        activity=discord.Activity(type=discord.ActivityType.watching, name=ACTIVITY_NAME))
 
     # LOADING Extensions
     # this is done in on_ready() so that cogs can fetch data from discord when they're loaded

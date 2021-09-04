@@ -14,6 +14,7 @@ Including a custom help command and ping command, utils for easy embed creation,
 | `export VERSION="unknown"` | Version the bot is running |
 | `export OWNER_NAME="unknwon"` | Name of the bot owner |
 | `export OWNER_ID="100000000000000000"` | ID of the bot owner |
+| `export ACTIVITY_NAME=f"{PREFIX}help"`| Activity bot plays |  
 
 The shown values are the default values that will be loaded if nothing else is specified.  
 Expressions like `{PREFIX}` will be replaced by during loading the variable and can be used in specified env variables.  
