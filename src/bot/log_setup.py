@@ -15,12 +15,10 @@ formatter = logging.Formatter("[{asctime}] [{levelname}] [{name}] {message}", st
 
 # logger for writing to file
 file_logger = logging.FileHandler('data/events.log')
-file_logger.setLevel(logging.INFO)
 file_logger.setFormatter(formatter)
 
 # logger for console prints
 console_logger = logging.StreamHandler()
-console_logger.setLevel(logging.INFO)
 console_logger.setFormatter(formatter)
 
 # get new logger
