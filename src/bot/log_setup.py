@@ -11,7 +11,7 @@ if not os.path.exists('data/'):
     os.mkdir('data/')
 
 # set logging format
-formatter = logging.Formatter("[{asctime}] [{levelname}] [{name}] {message}", style="{")
+formatter = logging.Formatter("[{asctime}] [{levelname}] [{module}.{funcName}] {message}", style="{")
 
 # logger for writing to file
 file_logger = logging.FileHandler('data/events.log')
