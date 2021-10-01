@@ -44,8 +44,15 @@ def load_env(key: str, default: str, config_dict=None) -> str:
 
     # catch token and prefix value, since it doesn't need the extra replace handling below
     # also PREFIX isn't defined yet...
-    if key == "TOKEN" or key == "PREFIX":
+    if key == "TOKEN":
         return value
+
+    if key == "PREFIX":
+        if value:
+            return value
+        else:
+            logger.warning(f"Can't load env-variable for: '{key}' - falling back to DEFAULT {key}='{default}'")
+            return default
 
     if value is not None:
         try:
