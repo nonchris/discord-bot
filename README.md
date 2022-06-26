@@ -1,3 +1,5 @@
+### This template is currenty based on discord.py 1.7.3
+A migration to d.py v2 will happen in the near future.  
 # discord-bot-template
 Generic, functional bot based on discord.py  
 Including a custom help command and ping command, utils for easy embed creation, logging configuration, and a general bot setup
