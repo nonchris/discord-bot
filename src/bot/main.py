@@ -6,7 +6,7 @@ from discord.ext import commands
 
 # setup of logging and env-vars
 # logging must be initialized before environment, to enable logging in environment
-from .log_setup import logger
+from .log_setup import logger, formatter, console_logger
 from .environment import PREFIX, TOKEN, ACTIVITY_NAME
 
 """
@@ -73,11 +73,18 @@ async def on_ready():
         bot.load_extension(extension, package=__package__)
 
 
-def start_bot(token=None):
+def start_bot(token=None, log_handler=console_logger, log_formatter=formatter, root_logger=True):
     """ Start the bot, takes token, uses token from env if none is given """
+    # TODO: Logs from d.py don't appear in the log file
     if token is not None:
-        bot.run(token)
+        bot.run(token,
+                log_handler=log_handler,
+                log_formatter=log_formatter,
+                root_logger=root_logger)
     if TOKEN is not None:
-        bot.run(TOKEN)
+        bot.run(TOKEN,
+                log_handler=log_handler,
+                log_formatter=log_formatter,
+                root_logger=root_logger)
     else:
         logger.error("No token was given! - Exiting")
