@@ -70,7 +70,7 @@ async def on_ready():
     ]
 
     for extension in initial_extensions:
-        bot.load_extension(extension, package=__package__)
+        await bot.load_extension(extension, package=__package__)
 
 
 def start_bot(token=None, log_handler=console_logger, log_formatter=formatter, root_logger=True):

@@ -129,10 +129,10 @@ class Help(commands.Cog):
         await utl.send_embed(ctx, emb)
 
 
-def setup(bot):
+async def setup(bot):
     """!
     Setup a bot.
 
     @param bot The bot to setup.
     """
-    bot.add_cog(Help(bot))
+    await bot.add_cog(Help(bot))
