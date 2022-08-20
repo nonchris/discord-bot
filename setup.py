@@ -5,6 +5,8 @@ here = pathlib.Path(__file__).parent.resolve()
 
 # Get the long description from the README file
 long_description = (here / 'README.md').read_text(encoding='utf-8')
+with open(here / "requirements.txt", "r") as f:
+    dependencies = f.readlines()
 
 setup(
     # TODO: Adjust your project information here
@@ -26,7 +28,7 @@ setup(
 
     python_requires='>=3.8, <4',
 
-    install_requires='discord.py ~= 1.7.2',
+    install_requires=dependencies,
 
     classifiers=[
 
