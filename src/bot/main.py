@@ -13,6 +13,7 @@ This bot is based on a template by nonchris
 https://github.com/nonchris/discord-bot
 """
 
+
 class MyBot(commands.Bot):
     """!
     Custom bot-class implementing useful defaults for loading cogs and pushing slash-commands
@@ -33,7 +34,7 @@ class MyBot(commands.Bot):
         """!
         A coroutine to be called to setup the bot, by default this is blank.
         This performs an asynchronous setup after the bot is logged in,
-        but before it has connected to the Websocket.
+        but before it has connected to the Websocket (quoted from d.py docs)
         """
 
         # LOADING Extensions

@@ -32,7 +32,7 @@ class Help(commands.Cog):
     # @commands.bot_has_permissions(add_reactions=True,embed_links=True)
     async def help(self, ctx, *params):
         """!
-        Shows all modules of that bot
+        Shows all modules of that bot, slash commands will not be listed
         
         @param ctx Context of the message.
         @param params further arguments

@@ -43,8 +43,11 @@ class Misc(commands.Cog):
     async def ping_slash(self,
                          interaction: discord.Interaction,
                          mode: Optional[Literal["silent", "loud"]]):
+        """
+        Ping command implementing the same functionality as "chat"-command
+        But with extra option to be silent
+        """
         logger.info(f"ping: {round(self.bot.latency * 1000)}")
-
         # decide whether this message shall be silent
         ephemeral = True if mode and mode == "silent" else False
 
