@@ -122,8 +122,9 @@ class MyBot(commands.Bot):
 # Create instance of our bot
 bot = MyBot()
 
+
 # Entrypoint function called from __init__.py
-def start_bot(token=None, log_handler=console_logger, log_formatter=formatter, root_logger=True):
+def start_bot(token=None, log_handler=console_logger, log_formatter=formatter, root_logger=False):
     """ Start the bot, takes token, uses token from env if none is given """
     # TODO: Logs from d.py don't appear in the log file (note for the dev, not the template user)
     if token is not None:
