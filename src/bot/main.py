@@ -74,6 +74,14 @@ class MyBot(commands.Bot):
         await self.change_presence(
             activity=discord.Activity(type=discord.ActivityType.watching, name=ACTIVITY_NAME))
 
+    async def on_guild_join(self, guild: discord.Guild):
+        """!
+        Function called when bot is invited onto a new server
+        """
+        logger.info(f"Bot joined guild: '{guild.name}'")
+        # try to push slash commands to new server
+        await self.__sync_commands_to_guild(guild)
+
     async def __sync_commands_to_guild(self, guild: discord.Guild):
         """!
         Function to push all commands to a guild
