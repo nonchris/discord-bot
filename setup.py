@@ -1,3 +1,5 @@
+import re
+
 from setuptools import setup, find_packages
 import pathlib
 
@@ -8,10 +10,13 @@ long_description = (here / 'README.md').read_text(encoding='utf-8')
 with open(here / "requirements.txt", "r") as f:
     dependencies = f.readlines()
 
+with open('src/discord_bot/__init__.py') as f:
+    version = re.search(r'__version__\s*=\s*\"((\w+\.?)+)', f.read(), re.MULTILINE).group(1)
+
 setup(
     # TODO: Adjust your project information here
-    name='discord-bot',
-    version='2.0.0',
+    name='discord_bot',
+    version=version,
     description='A discord bot template',
     long_description=long_description,
     long_description_content_type='text/markdown',

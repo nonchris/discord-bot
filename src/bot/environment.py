@@ -1,3 +1,4 @@
+from importlib.metadata import version
 import json
 import os
 from .log_setup import logger
@@ -89,8 +90,8 @@ TOKEN = load_env("TOKEN", '', config_dict=cfg_dict)  # reading in the token from
 
 # loading optional env variables
 PREFIX = load_env("PREFIX", "b!", config_dict=cfg_dict)
-VERSION = load_env("VERSION", "unknown", config_dict=cfg_dict)  # version of the bot
 OWNER_NAME = load_env("OWNER_NAME", "unknown", config_dict=cfg_dict)   # owner name with tag e.g. pi#3141
 OWNER_ID = int(load_env("OWNER_ID", "100000000000000000", config_dict=cfg_dict))  # discord id of the owner
 ACTIVITY_NAME = load_env("ACTIVITY_NAME", f"{PREFIX}help", config_dict=cfg_dict)  # activity bot plays
 
+VERSION = version("discord_bot")  # version of the bot

@@ -18,7 +18,6 @@ Including a custom help command and ping command, utils for easy embed creation,
 | parameter |  description |
 | ------ |  ------ |
 | `PREFIX="b!"`  | Command prefix |
-| `VERSION="unknown"` | Version the bot is running |
 | `OWNER_NAME="unknwon"` | Name of the bot owner |
 | `OWNER_ID="100000000000000000"` | ID of the bot owner |
 | `ACTIVITY_NAME=f"{PREFIX}help"`| Activity bot plays |  
