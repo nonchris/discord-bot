@@ -125,16 +125,10 @@ bot = MyBot()
 # Entrypoint function called from __init__.py
 def start_bot(token=None, log_handler=console_logger, log_formatter=formatter, root_logger=True):
     """ Start the bot, takes token, uses token from env if none is given """
-    # TODO: Logs from d.py don't appear in the log file
+    # TODO: Logs from d.py don't appear in the log file (note for the dev, not the template user)
     if token is not None:
-        bot.run(token,
-                log_handler=log_handler,
-                log_formatter=log_formatter,
-                root_logger=root_logger)
+        bot.run(token, log_handler=log_handler, log_formatter=log_formatter, root_logger=root_logger)
     if TOKEN is not None:
-        bot.run(TOKEN,
-                log_handler=log_handler,
-                log_formatter=log_formatter,
-                root_logger=root_logger)
+        bot.run(TOKEN, log_handler=log_handler, log_formatter=log_formatter, root_logger=root_logger)
     else:
         logger.error("No token was given! - Exiting")
