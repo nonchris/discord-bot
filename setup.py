@@ -60,7 +60,7 @@ setup(
 
     entry_points={
         'console_scripts': [
-            'discord-bot=bot:main',
+            'discord-bot=discord_bot:main',
         ],
     },
 )

@@ -69,7 +69,7 @@ _If a variable is set using env and json **the environment-variable replaces the
 
 
 # I'm new to bots - where to start?
-Have a look at `src/bot/cogs/misc.py` this is a good place to start with your first smaller functions.  
+Have a look at `src/discord_bot/cogs/misc.py` this is a good place to start with your first smaller functions.  
 You'll find some basic examples there.  
 Try to modify the `ping`-command or start with a small listener (`on_message`) that responds to each message the bot receives.  
 Or write a slash command that sends the date the [member joined the server](https://discordpy.readthedocs.io/en/latest/api.html?highlight=joined#discord.Member.joined_at).  
