@@ -10,8 +10,8 @@ long_description = (here / 'README.md').read_text(encoding='utf-8')
 with open(here / "requirements.txt", "r") as f:
     dependencies = f.readlines()
 
-with open('src/discord_bot/__init__.py') as f:
-    version = re.search(r'__version__\s*=\s*\"((\w+\.?)+)', f.read(), re.MULTILINE).group(1)
+with open('src/discord_bot/version.py') as f:
+    version = re.search(r'VERSION\s*=\s*\"((\w+\.?)+)', f.read(), re.MULTILINE).group(1)
 
 setup(
     # TODO: Adjust your project information here
