@@ -51,7 +51,8 @@ class Help(commands.Cog):
             # starting to build embed
             emb = discord.Embed(title='Commands and modules', color=utl.blue_light,
                                 description=f'Use `{PREFIX}h <module>` to gain more information about that module '
-                                            f':smiley:\n')
+                                            f':smiley:\n'
+                                            f'Please note that _slash commands are not listed in this overview_.\n')
 
             # iterating trough cogs, gathering descriptions
             cogs_desc = ''
