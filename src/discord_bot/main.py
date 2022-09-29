@@ -37,6 +37,13 @@ class MyBot(commands.Bot):
         but before it has connected to the Websocket (quoted from d.py docs)
         """
 
+    # login message
+    async def on_ready(self):
+        """!
+        Function called when the bot is ready. Emits the '[Bot] has connected' message
+        Loads the extensions
+        """
+
         # LOADING Extensions
         # this is done in on_ready() so that cogs can fetch data from discord when they're loaded
         bot.remove_command('help')  # unload default help message
@@ -48,12 +55,6 @@ class MyBot(commands.Bot):
 
         for extension in initial_extensions:
             await bot.load_extension(extension, package=__package__)
-
-    # login message
-    async def on_ready(self):
-        """!
-        Function called when the bot is ready. Emits the '[Bot] has connected' message
-        """
 
         # Walk all guilds, report connected guilds and push commands to guilds
         member_count = 0
