@@ -27,4 +27,4 @@ logger.setLevel(logging.INFO)
 
 # register loggers
 logger.addHandler(file_logger)
-logger.addHandler(console_logger)
+logger.addHandler(console_logger)  # discord handles this logger

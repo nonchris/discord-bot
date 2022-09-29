@@ -32,7 +32,7 @@ class Help(commands.Cog):
     # @commands.bot_has_permissions(add_reactions=True,embed_links=True)
     async def help(self, ctx, *params):
         """!
-        Shows all modules of that bot
+        Shows all modules of that bot, slash commands will not be listed
         
         @param ctx Context of the message.
         @param params further arguments
@@ -51,7 +51,8 @@ class Help(commands.Cog):
             # starting to build embed
             emb = discord.Embed(title='Commands and modules', color=utl.blue_light,
                                 description=f'Use `{PREFIX}h <module>` to gain more information about that module '
-                                            f':smiley:\n')
+                                            f':smiley:\n'
+                                            f'Please note that _slash commands are not listed in this overview_.\n')
 
             # iterating trough cogs, gathering descriptions
             cogs_desc = ''
@@ -129,10 +130,10 @@ class Help(commands.Cog):
         await utl.send_embed(ctx, emb)
 
 
-def setup(bot):
+async def setup(bot):
     """!
     Setup a bot.
 
     @param bot The bot to setup.
     """
-    bot.add_cog(Help(bot))
+    await bot.add_cog(Help(bot))
