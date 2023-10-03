@@ -46,7 +46,7 @@ class MyBot(commands.Bot):
 
         # LOADING Extensions
         # this is done in on_ready() so that cogs can fetch data from discord when they're loaded
-        bot.remove_command('help')  # unload default help message
+        self.remove_command('help')  # unload default help message
         # TODO: Register your extensions here
         initial_extensions = [
             '.cogs.misc',
@@ -54,12 +54,12 @@ class MyBot(commands.Bot):
         ]
 
         for extension in initial_extensions:
-            await bot.load_extension(extension, package=__package__)
+            await self.load_extension(extension, package=__package__)
 
         # Walk all guilds, report connected guilds and push commands to guilds
         member_count = 0
         guild_string = ""
-        for g in bot.guilds:
+        for g in self.guilds:
             guild_string += f"{g.name} - {g.id} - Members: {g.member_count}\n"
             member_count += g.member_count
 
@@ -69,7 +69,7 @@ class MyBot(commands.Bot):
             await self.__sync_commands_to_guild(g)
 
         logger.info(f"\n---\n"
-                    f"Bot '{bot.user.name}' has connected, active on {len(self.guilds)} guilds:\n{guild_string}"
+                    f"Bot '{self.user.name}' has connected, active on {len(self.guilds)} guilds:\n{guild_string}"
                     f"---\n")
 
         # set the status of the bot
@@ -91,7 +91,7 @@ class MyBot(commands.Bot):
         """
         try:
             self.tree.copy_global_to(guild=guild)
-            await bot.tree.sync(guild=guild)
+            await self.tree.sync(guild=guild)
             logger.info(f"Pushed commands to: {guild.name}")
         except discord.errors.Forbidden:
             logger.warning(f"Don't have the permissions to push slash commands to: '{guild.name}'")
