@@ -23,18 +23,27 @@ saving time.
 ## Setup
 
 ###### Setup a [venv](https://docs.python.org/3/library/venv.html) (optional, but recommend)
-`python3 -m venv venv`   
-`source venv/bin/activate` 
+```bash
+python3 -m venv venv
+source venv/bin/activate
+``` 
 
 
-##### Using pip to install the bot as editable package:  
-` python3 -m pip install -e .`  
-`export TOKEN="your-key"`  
-`discord-bot`  
-##### Or using the launch script:  
-`pip install -r requirements.txt`  
-`export TOKEN="your-key"`   
-`python3 ~/git/discord-bot/launcher.py`  
+##### Using pip to install and run the bot as (editable) package:  
+```bash
+python3 -m pip install -e .
+export TOKEN="your-token"
+discord-bot
+```
+Note: `-e` is meant only for development. Do not use it for deployment!
+
+##### Or run the bot directly:  
+```bash
+pip install -r requirements.txt  
+export TOKEN="your-token"
+python3 src/discord_bot/__init__.py
+```
+
 
 ### Intents
 The bot uses all intents by default, those are required for such simple things like 'display member-count at startup'.  
