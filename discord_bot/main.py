@@ -3,15 +3,15 @@
 import discord
 from discord.ext import commands
 
-from .environment import ACTIVITY_NAME
-from .environment import PREFIX
-from .environment import TOKEN
+from discord_bot.environment import ACTIVITY_NAME
+from discord_bot.environment import PREFIX
+from discord_bot.environment import TOKEN
 
 # setup of logging and env-vars
 # logging must be initialized before environment, to enable logging in environment
-from .log_setup import console_logger
-from .log_setup import formatter
-from .log_setup import logger
+from discord_bot.log_setup import console_logger
+from discord_bot.log_setup import formatter
+from discord_bot.log_setup import logger
 
 """
 This bot is based on a template by nonchris
@@ -34,6 +34,7 @@ class MyBot(commands.Bot):
     def __init__(self, intents: discord.Intents = discord.Intents.all()):
         """Initialize bot with intents and init super"""
         super().__init__(command_prefix=self._prefix_callable, intents=intents)
+        self.initial_extensions = [".cogs.misc", ".cogs.help"]
 
     async def setup_hook(self):
         """!
@@ -53,9 +54,8 @@ class MyBot(commands.Bot):
         # this is done in on_ready() so that cogs can fetch data from discord when they're loaded
         self.remove_command("help")  # unload default help message
         # TODO: Register your extensions here
-        initial_extensions = [".cogs.misc", ".cogs.help"]
 
-        for extension in initial_extensions:
+        for extension in self.initial_extensions:
             await self.load_extension(extension, package=__package__)
 
         # Walk all guilds, report connected guilds and push commands to guilds
@@ -126,6 +126,23 @@ class MyBot(commands.Bot):
 
 # Create instance of our bot
 bot = MyBot()
+
+
+@bot.command(name="r")
+async def reload_extension_command(ctx: commands.Context):
+    """Reload all extensions in self.initial_extensions."""
+    results = []
+    for extension in bot.initial_extensions:
+        try:
+            await bot.reload_extension(extension, package=__package__)
+            results.append(f"Reloaded: {extension}")
+            logger.info(f"Reloaded: {extension}")
+        except Exception as e:
+            results.append(f"Failed to reload {extension}: {e}")
+            logger.error(f"Failed to reload {extension}: {e}")
+
+    message = "\n".join(results)
+    await ctx.send(f"Reload results:\n{message}")
 
 
 # Entrypoint function called from __init__.py
