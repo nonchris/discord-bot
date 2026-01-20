@@ -34,11 +34,8 @@ Source = "https://github.com/nonchris/discord-bot"
 [project.scripts]
 discord-bot = "discord_bot:main"
 
-[tool.setuptools]
-package-dir = { "" = "src" }
-
 [tool.setuptools.packages.find]
-where = ["src"]
+where = ["."]
 
 [tool.setuptools.dynamic]
 version = { attr = "discord_bot.version.VERSION" }
