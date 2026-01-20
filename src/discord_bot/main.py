@@ -3,10 +3,15 @@
 import discord
 from discord.ext import commands
 
+from .environment import ACTIVITY_NAME
+from .environment import PREFIX
+from .environment import TOKEN
+
 # setup of logging and env-vars
 # logging must be initialized before environment, to enable logging in environment
-from .log_setup import logger, formatter, console_logger
-from .environment import PREFIX, TOKEN, ACTIVITY_NAME
+from .log_setup import console_logger
+from .log_setup import formatter
+from .log_setup import logger
 
 """
 This bot is based on a template by nonchris
@@ -27,7 +32,7 @@ class MyBot(commands.Bot):
     """
 
     def __init__(self, intents: discord.Intents = discord.Intents.all()):
-        """ Initialize bot with intents and init super """
+        """Initialize bot with intents and init super"""
         super().__init__(command_prefix=self._prefix_callable, intents=intents)
 
     async def setup_hook(self):
@@ -46,12 +51,9 @@ class MyBot(commands.Bot):
 
         # LOADING Extensions
         # this is done in on_ready() so that cogs can fetch data from discord when they're loaded
-        self.remove_command('help')  # unload default help message
+        self.remove_command("help")  # unload default help message
         # TODO: Register your extensions here
-        initial_extensions = [
-            '.cogs.misc',
-            '.cogs.help'
-        ]
+        initial_extensions = [".cogs.misc", ".cogs.help"]
 
         for extension in initial_extensions:
             await self.load_extension(extension, package=__package__)
@@ -68,13 +70,14 @@ class MyBot(commands.Bot):
             # this is inefficient, but a fast way to push new commands to all guilds
             await self.__sync_commands_to_guild(g)
 
-        logger.info(f"\n---\n"
-                    f"Bot '{self.user.name}' has connected, active on {len(self.guilds)} guilds:\n{guild_string}"
-                    f"---\n")
+        logger.info(
+            f"\n---\n"
+            f"Bot '{self.user.name}' has connected, active on {len(self.guilds)} guilds:\n{guild_string}"
+            f"---\n"
+        )
 
         # set the status of the bot
-        await self.change_presence(
-            activity=discord.Activity(type=discord.ActivityType.watching, name=ACTIVITY_NAME))
+        await self.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=ACTIVITY_NAME))
 
     async def on_guild_join(self, guild: discord.Guild):
         """!
@@ -108,7 +111,7 @@ class MyBot(commands.Bot):
         user_id = _bot.user.id
         # way discord expresses mentions
         # mobile and desktop have a different syntax how mentions are sent, so we handle both
-        prefixes = [f'<@!{user_id}> ', f'<@{user_id}> ']
+        prefixes = [f"<@!{user_id}> ", f"<@{user_id}> "]
         if msg.guild is None:  # we're in DMs, using default prefix
             prefixes.append(PREFIX)
             return prefixes
@@ -127,7 +130,7 @@ bot = MyBot()
 
 # Entrypoint function called from __init__.py
 def start_bot(token=None, log_handler=console_logger, log_formatter=formatter, root_logger=False):
-    """ Start the bot, takes token, uses token from env if none is given """
+    """Start the bot, takes token, uses token from env if none is given"""
     # TODO: Logs from d.py don't appear in the log file (note for the dev, not the template user)
     if token is not None:
         bot.run(token, log_handler=log_handler, log_formatter=log_formatter, root_logger=root_logger)

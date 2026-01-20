@@ -16,5 +16,6 @@ __version__ = VERSION
 def main():
     start_bot()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

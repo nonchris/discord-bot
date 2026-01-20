@@ -1,14 +1,17 @@
 import json
 import os
-from .log_setup import logger
-from .version import VERSION  # load version, other modules can access without extra import
-
 
 ### @package environment
 #
 # Interactions with the environment variables.
 #
-from typing import Dict, Optional
+from typing import Dict
+from typing import Optional
+
+from .log_setup import logger
+from .version import (
+    VERSION,  # load version, other modules can access without extra import
+)
 
 
 def load_env(key: str, default: str, config_dict=None) -> str:
@@ -71,11 +74,11 @@ def load_env(key: str, default: str, config_dict=None) -> str:
     return default
 
 
-def load_conf_file(config_file='./data/config.json') -> Optional[Dict[str, str]]:
+def load_conf_file(config_file="./data/config.json") -> Optional[Dict[str, str]]:
     if os.path.isfile(config_file):
         logger.debug(f"Config file '{config_file}' exists, trying to read")
         try:
-            with open(config_file, "r") as jsonfile:
+            with open(config_file) as jsonfile:
                 return json.load(jsonfile)
 
         except OSError:
@@ -85,9 +88,9 @@ def load_conf_file(config_file='./data/config.json') -> Optional[Dict[str, str]]
         logger.debug(f"No config-file was found under '{config_file}', trying to continue")
 
 
-cfg_dict = load_conf_file('./data/config.json')
+cfg_dict = load_conf_file("./data/config.json")
 
-TOKEN = load_env("TOKEN", '', config_dict=cfg_dict)  # reading in the token from environment - there is no default...
+TOKEN = load_env("TOKEN", "", config_dict=cfg_dict)  # reading in the token from environment - there is no default...
 
 # loading optional env variables
 PREFIX = load_env("PREFIX", "b!", config_dict=cfg_dict)

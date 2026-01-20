@@ -13,15 +13,16 @@ from discord.errors import Forbidden
 
 # color scheme for embeds as rbg
 blue_light = discord.Color.from_rgb(20, 255, 255)  # default color
-green = discord.Color.from_rgb(142, 250, 60)   # success green
+green = discord.Color.from_rgb(142, 250, 60)  # success green
 yellow = discord.Color.from_rgb(245, 218, 17)  # warning like 'hey, that's not cool'
 orange = discord.Color.from_rgb(245, 139, 17)  # warning - rather critical like 'no more votes left'
-red = discord.Color.from_rgb(255, 28, 25)      # error red
+red = discord.Color.from_rgb(255, 28, 25)  # error red
 
 ### @package utils
 #
 # Utilities and helper functions
 #
+
 
 async def send_embed(ctx, embed):
     """!
@@ -42,7 +43,9 @@ async def send_embed(ctx, embed):
         except Forbidden:
             await ctx.author.send(
                 f"Hey, seems like I can't send any message in {ctx.channel.name} on {ctx.guild.name}\n"
-                f"May you inform the server team about this issue? :slight_smile:", embed=embed)
+                f"May you inform the server team about this issue? :slight_smile:",
+                embed=embed,
+            )
 
 
 def make_embed(title="", color=blue_light, name="‌", value="‌", footer=None) -> discord.Embed:
@@ -74,7 +77,7 @@ def extract_id_from_string(content: str) -> Union[int, None]:
     @return extracted id as int if exists, else None
     """
     # matching string that has 18 digits surrounded by non-digits or start/end of string
-    match = re.match(r'(\D+|^)(\d{18})(\D+|$)', content)
+    match = re.match(r"(\D+|^)(\d{18})(\D+|$)", content)
 
     return int(match.group(2)) if match else None
 
