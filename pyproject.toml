@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "discord_bot"
+dynamic = ["version", "dependencies"]
+description = "A discord bot template"
+readme = "README.md"
+requires-python = ">=3.8,<4"
+license = { text = "GPL-3.0" }
+authors = [
+    { name = "nonchris", email = "info@nonchris.eu" }
+]
+keywords = ["discord-bot"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Other Audience",
+    "Topic :: Communications :: Chat",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3 :: Only",
+    "Typing :: Typed",
+]
+
+[project.urls]
+Homepage = "https://github.com/nonchris/discord-bot"
+"Bug Reports" = "https://github.com/nonchris/discord-bot/issues"
+Source = "https://github.com/nonchris/discord-bot"
+
+[project.scripts]
+discord-bot = "discord_bot:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.dynamic]
+version = { attr = "discord_bot.version.VERSION" }
+dependencies = { file = ["requirements.txt"] }
+
+[tool.isort]
+profile = "black"
+force_single_line = "true"
+
+[tool.black]
+line-length = 120
