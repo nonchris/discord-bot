@@ -132,7 +132,7 @@ bot = MyBot()
 @bot.command(name="r")
 async def reload_extension_command(ctx: commands.Context):
     """Reload all extensions in self.initial_extensions."""
-    if not ctx.author.id != OWNER_ID:
+    if ctx.author.id != OWNER_ID:
         logger.warning(f"User {ctx.author.display_name} ({ctx.author.id}) tried to reload extensions!")
         return
 
