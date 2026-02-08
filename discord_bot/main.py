@@ -32,9 +32,9 @@ class MyBot(commands.Bot):
 
     """
 
-    def __init__(self, intents: discord.Intents = discord.Intents.all()):
-        """Initialize bot with intents and init super"""
-        super().__init__(command_prefix=self._prefix_callable, intents=intents)
+    def __init__(self, intents: discord.Intents = discord.Intents.all(), **options):
+        """Initialize bot with intents and init super, **options is directly passed to the bot constructor"""
+        super().__init__(command_prefix=self._prefix_callable, intents=intents, **options)
         self.initial_extensions = [".cogs.misc", ".cogs.help"]
 
     async def setup_hook(self):
